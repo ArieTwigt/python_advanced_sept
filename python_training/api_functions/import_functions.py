@@ -27,7 +27,7 @@ def calculate_circle(diameter: float) -> float:
 
 
 # create a function that sends a request to the RDW API
-def get_cars_by_brand(brand: str) -> pd.DataFrame:
+def get_cars_by_brand(brand: str, max_cars: int=5) -> pd.DataFrame:
     '''
     Returns a DataFrame of cars by the brand specified
 
@@ -40,8 +40,11 @@ def get_cars_by_brand(brand: str) -> pd.DataFrame:
     
     '''
     
+    # upper the brand name
+    brand_name_upper = brand.upper()
+
     # compose the endpoint
-    endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?merk={brand}"
+    endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?merk={brand_name_upper}"
 
     # execute the API request
     response = requests.get(endpoint)
@@ -57,7 +60,10 @@ def get_cars_by_brand(brand: str) -> pd.DataFrame:
     # create a pandas DataFrame from the list
     cars_df = pd.DataFrame(cars_list)
 
-    return cars_df
+    # limit the amount of cars
+    cars_df_max = cars_df.head(max_cars)
+     
+    return cars_df_max
 
 
 def get_car_by_license_plate(plate: str) -> pd.DataFrame:
@@ -74,7 +80,7 @@ def get_car_by_license_plate(plate: str) -> pd.DataFrame:
 
     # uppercase the letters and remove the "-"
     plate_upper = plate.upper().replace("-", "")
-
+    
     # specify the endpoint
     endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken={plate_upper}"
 
@@ -91,7 +97,7 @@ def get_car_by_license_plate(plate: str) -> pd.DataFrame:
     cars_list = response.json()
 
     # if the list is empty
-    if len(cars_list) == 0:
+    if len(cars_list) != 1:
         print(f"No car found for license plate: {plate}")
 
     # convert the car to a Data Frame
@@ -100,8 +106,9 @@ def get_car_by_license_plate(plate: str) -> pd.DataFrame:
     return cars_df
 
 
+if __name__ == "__main__":
+    print("This function is now the main")
 
-    pass
 
 # object
 # str

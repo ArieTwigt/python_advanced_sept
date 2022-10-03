@@ -10,3 +10,11 @@ if "data" not in files_folders:
 else:
     print("The 'data' folder is already present")
 
+# check if the license folder exists
+files_folders_data = os.listdir("data")
+
+if "license" not in files_folders_data:
+    print("The 'license' folder not present yet, creating it...")
+    os.makedirs("data/license")
+else:
+    print("The 'license' folder is already present")
