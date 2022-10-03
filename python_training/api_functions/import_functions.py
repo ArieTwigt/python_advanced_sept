@@ -1,6 +1,7 @@
 import math
 import requests
 
+
 # Add a function, with type hinting
 def calculate_circle(diameter: float) -> float:
     '''
@@ -26,4 +27,7 @@ def calculate_circle(diameter: float) -> float:
 
 # create a function that sends a request to the RDW API
 def get_cars_by_brand(brand: str) -> None:
+
+
+    response = requests.get("https://opendata.rdw.nl/resource/m9d7-ebf2.json")
     pass

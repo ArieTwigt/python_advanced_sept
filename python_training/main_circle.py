@@ -1,4 +1,4 @@
-from api_functions.import_functions import calculate_circle, get_cars_by_brand
+from api_functions.import_functions import calculate_circle
 
 # the input will be a  'str' by default
 selected_diameter = input("Enter diameter:\n")
