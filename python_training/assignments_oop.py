@@ -4,7 +4,7 @@ from cars.garage import Garage
 
 if __name__ == '__main__':
     my_car = Car("NISSAN", "Micra", "RED", 1000, id=1)
-    my_car_2 = Car("TOYOTA", "YARIS", "BLUE", 5000, id=2)
+    my_car_2 = Car("TOYOTA", "YARIS", "BLUE", id=2)
     my_car_3 = Car("OPEL", "ASTRA", "WHITE", 3000, id=3)
 
     # define a garage
