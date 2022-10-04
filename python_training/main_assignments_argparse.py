@@ -1,5 +1,3 @@
-from pickletools import read_uint1
-from select import select
 from api_functions.import_functions import get_car_by_license_plate, get_cars_by_brand
 from api_functions.export_functions import export_df, export_df_license, export_to_db
 import argparse
@@ -51,6 +49,7 @@ if __name__ == '__main__':
         selected_brand = args.brand
 
         selected_color = args.color
+        
         if selected_color == None:
             cars_df = get_cars_by_brand(selected_brand)
         else:

@@ -62,10 +62,12 @@ def export_df_license(df: pd.DataFrame, license_plate, brand="Unknown") -> None:
 def export_to_db(df: pd.DataFrame) -> None:
 
     # define the connection string
-    con =  sqlite3.connect("data/data.db")   
+    db_path = "data/data.db"
+    con =  sqlite3.connect(db_path)   
 
     # export the pandas DataFrame to sqlite
-    print(f"Writing to Database: {con}")
+    print(f"Writing to Database: {db_path}")
+    
     df.to_sql("licensed_cars", 
               con=con,
               if_exists='append',

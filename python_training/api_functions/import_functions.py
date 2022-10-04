@@ -27,7 +27,7 @@ def calculate_circle(diameter: float) -> float:
 
 
 # create a function that sends a request to the RDW API
-def get_cars_by_brand(brand: str, max_cars: int=5, color=None) -> pd.DataFrame:
+def get_cars_by_brand(brand: str, max_cars: int=5, color: str=None) -> pd.DataFrame:
     '''
     Returns a DataFrame of cars by the brand specified
 
