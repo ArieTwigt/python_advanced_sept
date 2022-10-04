@@ -1,5 +1,6 @@
 from cars.garage import Garage
 
+
 class Car(Garage):
 
     # initial parameters of the class
@@ -45,3 +46,7 @@ class Car(Garage):
     # represent the clas in a formatted way
     def __repr__(self):
         return repr(f"{self.brand} - {self.model} : {self.availability}")
+
+
+if __name__ == "__main__":
+    print("THis comes from Cars")
