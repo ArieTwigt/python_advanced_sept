@@ -1,3 +1,4 @@
+from email.iterators import body_line_iterator
 import math
 from urllib import request
 import requests
@@ -69,7 +70,7 @@ def get_cars_by_brand(brand: str, max_cars: int=5, color: str=None) -> pd.DataFr
     return cars_df_max
 
 
-def get_car_by_license_plate(plate: str) -> pd.DataFrame:
+def get_car_by_license_plate(plate: str, as_dict: body_line_iterator=False) -> pd.DataFrame:
     '''
     Function to get a car by its license plate
 
@@ -102,6 +103,11 @@ def get_car_by_license_plate(plate: str) -> pd.DataFrame:
     # if the list is empty
     if len(cars_list) != 1:
         print(f"No car found for license plate: {plate}")
+
+    # return the dictionary that is more suitable for web pages
+    if as_dict:
+        return cars_list
+
 
     # convert the car to a Data Frame
     cars_df = pd.DataFrame(cars_list)

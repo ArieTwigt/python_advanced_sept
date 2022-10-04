@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Car info:</h1>
+
+<form action="show_car" method="POST">
+    <input name="plate" type="text">
+    <button class="btn btn-success" type="submit">SEARCH</button>
+</form>
+
+
+
+{% if selected_car is defined %}
+
+<ul>
+   <li><b>Plate:</b> {{ selected_car.kenteken }} </li>
+   <li><b>Brand:</b> {{ selected_car.merk }} </li>
+   <li><b>Model:</b> {{ selected_car.handelsbenaming }}</li> 
+</ul>
+
+{% else %}
+{% endif %}
+
+{% endblock %}
+<!-- Jinja templating -->
