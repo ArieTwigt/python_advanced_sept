@@ -1,5 +1,5 @@
 
-
+import math
 
 # add a decorator for correcting for inflation
 def correct_inflation(func):
@@ -26,6 +26,16 @@ def print_interest(func):
 # define function to calculate the interest
 @print_interest
 @correct_inflation
+def calc_interest_inflated(amount: float, rate: float, years:int):
+    '''
+    Calculates the amount after interest for a number of years
+    
+    '''
+    rate_pct = rate / 100
+    final_amount = amount * (1 + rate_pct) ** years
+    return final_amount 
+
+
 def calc_interest(amount: float, rate: float, years:int):
     '''
     Calculates the amount after interest for a number of years
@@ -36,6 +46,9 @@ def calc_interest(amount: float, rate: float, years:int):
     return final_amount 
 
 
+def calc_circle(diameter):
+    result = (diameter / 2) **2 * math.pi
+    return result
 
 # create a function that both uses the 'print_interest' and 'correct_inflation' wrappers
 
