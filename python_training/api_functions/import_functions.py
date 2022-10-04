@@ -27,7 +27,7 @@ def calculate_circle(diameter: float) -> float:
 
 
 # create a function that sends a request to the RDW API
-def get_cars_by_brand(brand: str, max_cars: int=5) -> pd.DataFrame:
+def get_cars_by_brand(brand: str, max_cars: int=5, color=None) -> pd.DataFrame:
     '''
     Returns a DataFrame of cars by the brand specified
 
@@ -44,7 +44,10 @@ def get_cars_by_brand(brand: str, max_cars: int=5) -> pd.DataFrame:
     brand_name_upper = brand.upper()
 
     # compose the endpoint
-    endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?merk={brand_name_upper}"
+    if color != None:
+        endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?merk={brand_name_upper}&eerste_kleur={color}"
+    else: 
+        endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?merk={brand_name_upper}"
 
     # execute the API request
     response = requests.get(endpoint)
