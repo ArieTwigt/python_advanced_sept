@@ -7,12 +7,14 @@ class Car(Garage):
                        model: str, 
                        color: str,
                        price: float=0.0,
+                       id: int=None,
                        purpose: str="transport",
                        availability: str="available"):
                        
         self.brand = brand
         self.model = model
         self.color = color 
+        self.id = id
         self.price = price
         self.purpose = purpose
         self.availability = availability
@@ -33,8 +35,12 @@ class Car(Garage):
     def change_price(self, change_amount: float):
         current_price = self.price
         self.price += change_amount
-        print(f"The price changed from {current_price} to {self.price} (change of {change_amount)")
+        print(f"The price changed from {current_price} to {self.price} (change of {change_amount})")
 
+
+    # def add id to the car
+    def add_car_id(self, id):
+        self.id = id
 
     # represent the clas in a formatted way
     def __repr__(self):
